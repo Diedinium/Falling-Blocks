@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     float screenHalfWidthInWorldUnits;
     float halfPlayerWidth;
     public bool playerIsDead;
+    public event System.Action OnPlayerDeath;
 
 
 	void Start () {
@@ -40,6 +41,10 @@ public class Player : MonoBehaviour {
     {
         if (collision.tag == "Block")
         {
+            if (OnPlayerDeath != null)
+            {
+                OnPlayerDeath();
+            }
             Destroy(gameObject);
             playerIsDead = true;
             print("Player killed");
