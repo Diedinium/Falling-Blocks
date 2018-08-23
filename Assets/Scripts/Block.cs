@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Block : MonoBehaviour {
 
-    public float speed = 6.5f;
+    public Vector2 speedMinMax;
+    public float speed;
     BlockSpawner blockSpawner;
     float screenWidthLocal;
 
@@ -12,6 +13,7 @@ public class Block : MonoBehaviour {
     {
         blockSpawner = FindObjectOfType<BlockSpawner>();
         screenWidthLocal = Camera.main.orthographicSize;
+        speed = Mathf.Lerp(speedMinMax.y, speedMinMax.x, Difficulty.GetDifficultyPercent());
     }
 
     void Update () {

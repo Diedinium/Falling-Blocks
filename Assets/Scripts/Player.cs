@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public float speed = 8.5f;
     float screenHalfWidthInWorldUnits;
     float halfPlayerWidth;
+    public bool playerIsDead;
 
 
 	void Start () {
@@ -32,6 +33,16 @@ public class Player : MonoBehaviour {
         if (transform.position.x > screenHalfWidthInWorldUnits + halfPlayerWidth)
         {
             transform.position = new Vector2(-screenHalfWidthInWorldUnits + halfPlayerWidth, transform.position.y);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Block")
+        {
+            Destroy(gameObject);
+            playerIsDead = true;
+            print("Player killed");
         }
     }
 }
