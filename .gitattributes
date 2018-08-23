@@ -1,0 +1,6 @@
+*.sln binary
+*.suo binary
+*.vcxproj binary
+*.asset binary
+*.unity binary
+*.prefab binary
