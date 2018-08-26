@@ -7,7 +7,6 @@ public class Player : MonoBehaviour {
     public float speed = 8.5f;
     float screenHalfWidthInWorldUnits;
     float halfPlayerWidth;
-    public bool playerIsDead;
     public event System.Action OnPlayerDeath;
 
 
@@ -46,8 +45,6 @@ public class Player : MonoBehaviour {
                 OnPlayerDeath();
             }
             Destroy(gameObject);
-            playerIsDead = true;
-            print("Player killed");
         }
     }
 }
