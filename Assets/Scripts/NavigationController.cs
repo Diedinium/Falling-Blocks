@@ -10,6 +10,7 @@ public class NavigationController : MonoBehaviour {
     public GameObject statisticsScreen;
     public GameObject settingsScreen;
     public GameObject deletePopup;
+    public GameObject carouselScreen;
 
     //Nav from start screen
     public void StatsClickFromStart()
@@ -105,7 +106,20 @@ public class NavigationController : MonoBehaviour {
         PlayerPrefs.SetInt("TotalTimeSurvived", 0);
         PlayerPrefs.SetInt("TotalBlocksDodged", 0);
         SceneManager.LoadScene(0);
-        
+
+    }
+
+    //Nav for carousel
+    public void CarouselClick()
+    {
+        startScreen.SetActive(false);
+        carouselScreen.SetActive(true);
+    }
+
+    public void MenuClickFromCarousel()
+    {
+        startScreen.SetActive(true);
+        carouselScreen.SetActive(false);
     }
 
 }

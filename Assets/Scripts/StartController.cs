@@ -15,6 +15,7 @@ public class StartController : MonoBehaviour {
     public Text totalPlayerDeathsText;
     public Text totalTimeSurvivedtext;
     public Text totalblocksdodgedtext;
+    public Text averageScoreText;
 
     
 
@@ -35,6 +36,7 @@ public class StartController : MonoBehaviour {
         totalPlayerDeathsText.text = totalPlayerDeaths.ToString();
         totalTimeSurvivedtext.text = totalTimeSurvived.ToString();
         totalblocksdodgedtext.text = blocksDodged.ToString();
+        averageScoreText.text = (PlayerPrefs.GetInt("TotalTimeSurvived") / PlayerPrefs.GetInt("TotalPlayerDeaths")).ToString();
 
 	}
 

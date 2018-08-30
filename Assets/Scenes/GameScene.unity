@@ -196,8 +196,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 800, y: 1200}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -274,8 +274,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23.317947, y: 38.054688}
-  m_SizeDelta: {x: 800, y: 1200.8}
+  m_AnchoredPosition: {x: -15.7, y: 23.8}
+  m_SizeDelta: {x: 1918.8, y: 2539.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322952346
 MonoBehaviour:
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallingBlockPrefab: {fileID: 1542624431450162, guid: a92a5867c761f964b869cc5021955359,
     type: 2}
-  InstantaionTimeMinMax: {x: 0.1, y: 0.35}
+  InstantaionTimeMinMax: {x: 0.12, y: 0.3}
   screenHalfSizeWorldUnits: {x: 0, y: 0}
   count: 0
   blockSize: 0
