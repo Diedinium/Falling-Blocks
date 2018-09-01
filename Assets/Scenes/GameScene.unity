@@ -495,6 +495,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  material:
+  - {fileID: 2100000, guid: 1ebd4389410a2bb4a9d1dafeca39188c, type: 2}
+  - {fileID: 2100000, guid: 9df9140d189a7f9459a08e4d5981af60, type: 2}
+  - {fileID: 2100000, guid: d5d2592f0d410974ab5569e807be5c7f, type: 2}
+  - {fileID: 2100000, guid: fc9dc37ebd203734caa7ef75f92b5927, type: 2}
+  - {fileID: 2100000, guid: 8f4185e0911494246b2f73f09ec118f9, type: 2}
+  player: {fileID: 521981622}
 --- !u!50 &521981624
 Rigidbody2D:
   serializedVersion: 4
@@ -1046,6 +1053,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 142072471}
   secondsSurvivedUI: {fileID: 1934254063}
   newHighScoreText: {fileID: 1216696068}
+  gameOver: 0
 --- !u!4 &1194134519
 Transform:
   m_ObjectHideFlags: 0
@@ -1185,9 +1193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5b8acd0ab84a44fb2fde02c0813228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingBlockPrefab: {fileID: 1542624431450162, guid: a92a5867c761f964b869cc5021955359,
-    type: 2}
-  InstantaionTimeMinMax: {x: 0.12, y: 0.3}
+  fallingBlockPrefab:
+  - {fileID: 1542624431450162, guid: a92a5867c761f964b869cc5021955359, type: 2}
+  - {fileID: 1542624431450162, guid: abfef0f4f6fe74e49aec44d66f5822f7, type: 2}
+  InstantaionTimeMinMax: {x: 0.15, y: 0.3}
   screenHalfSizeWorldUnits: {x: 0, y: 0}
   count: 0
   blockSize: 0

@@ -9,7 +9,7 @@ public class GameOver : MonoBehaviour {
     public GameObject gameOverScreen;
     public Text secondsSurvivedUI;
     public GameObject newHighScoreText;
-    bool gameOver;
+    public bool gameOver;
     int currentScore;
     int highScore;
     BlockSpawner blockSpawner;

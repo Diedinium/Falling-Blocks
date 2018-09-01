@@ -9,10 +9,21 @@ public class Player : MonoBehaviour {
     float halfPlayerWidth;
     public event System.Action OnPlayerDeath;
 
+    //Stores the value of the currently selected colour, which ranges from 1-5 depending on the button clicked.
+    private int selectedColour;
+
+    //Array storing the different available materials.
+    public Material[] material;
+
+    public GameObject player;
+
 
 	void Start () {
         halfPlayerWidth = transform.localScale.x / 2f;
         screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
+        selectedColour = PlayerPrefs.GetInt("SelectedColour");
+
+        SelectColourController();
 	}
 	
 	
@@ -45,6 +56,34 @@ public class Player : MonoBehaviour {
                 OnPlayerDeath();
             }
             Destroy(gameObject);
+        }
+    }
+
+    void SelectColourController()
+    {
+        if (selectedColour == 1)
+        {
+            player.GetComponent<MeshRenderer>().material = material[0];
+        }
+        else if (selectedColour == 2)
+        {
+            player.GetComponent<MeshRenderer>().material = material[1];
+        }
+        else if (selectedColour == 3)
+        {
+            player.GetComponent<MeshRenderer>().material = material[2];
+        }
+        else if (selectedColour == 4)
+        {
+            player.GetComponent<MeshRenderer>().material = material[3];
+        }
+        else if (selectedColour == 5)
+        {
+            player.GetComponent<MeshRenderer>().material = material[4];
+        }
+        else
+        {
+            player.GetComponent<MeshRenderer>().material = material[0];
         }
     }
 }

@@ -2,15 +2,99 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NavigationController : MonoBehaviour {
 
+    //Screens that will be enabled/disabled.
     public GameObject startScreen;
     public GameObject helpScreen;
     public GameObject statisticsScreen;
     public GameObject settingsScreen;
     public GameObject deletePopup;
     public GameObject carouselScreen;
+
+    //button array, so that button images can be updated.
+    public Button[] button;
+
+    //image array, stores the two possible states of the colour select buttons.
+    public Sprite[] spriteImage;
+
+    //button functions in colour select
+    public void ColourSelectRed()
+    {
+        //button gets changed to tickbox
+        button[0].GetComponent<Image>().sprite = spriteImage[0];
+
+        //makes sure all other buttons are set to the default state
+        button[1].GetComponent<Image>().sprite = spriteImage[1];
+        button[2].GetComponent<Image>().sprite = spriteImage[1];
+        button[3].GetComponent<Image>().sprite = spriteImage[1];
+        button[4].GetComponent<Image>().sprite = spriteImage[1];
+
+        //changes the playerprefs value for when GameScene references it
+        PlayerPrefs.SetInt("SelectedColour", 1);
+    }
+
+    public void ColourSelectBlue()
+    {
+        //button gets changed to tickbox
+        button[1].GetComponent<Image>().sprite = spriteImage[0];
+
+        //makes sure all other buttons are set to the default state
+        button[0].GetComponent<Image>().sprite = spriteImage[1];
+        button[2].GetComponent<Image>().sprite = spriteImage[1];
+        button[3].GetComponent<Image>().sprite = spriteImage[1];
+        button[4].GetComponent<Image>().sprite = spriteImage[1];
+
+        //changes the playerprefs value for when GameScene references it
+        PlayerPrefs.SetInt("SelectedColour", 2);
+    }
+
+    public void ColourSelectGreen()
+    {
+        //button gets changed to tickbox
+        button[2].GetComponent<Image>().sprite = spriteImage[0];
+
+        //makes sure all other buttons are set to the default state
+        button[0].GetComponent<Image>().sprite = spriteImage[1];
+        button[1].GetComponent<Image>().sprite = spriteImage[1];
+        button[3].GetComponent<Image>().sprite = spriteImage[1];
+        button[4].GetComponent<Image>().sprite = spriteImage[1];
+
+        //changes the playerprefs value for when GameScene references it
+        PlayerPrefs.SetInt("SelectedColour", 3);
+    }
+
+    public void ColourSelectPurple()
+    {
+        //button gets changed to tickbox
+        button[3].GetComponent<Image>().sprite = spriteImage[0];
+
+        //makes sure all other buttons are set to the default state
+        button[0].GetComponent<Image>().sprite = spriteImage[1];
+        button[1].GetComponent<Image>().sprite = spriteImage[1];
+        button[2].GetComponent<Image>().sprite = spriteImage[1];
+        button[4].GetComponent<Image>().sprite = spriteImage[1];
+
+        //changes the playerprefs value for when GameScene references it
+        PlayerPrefs.SetInt("SelectedColour", 4);
+    }
+
+    public void ColourSelectGold()
+    {
+        //button gets changed to tickbox
+        button[4].GetComponent<Image>().sprite = spriteImage[0];
+
+        //makes sure all other buttons are set to the default state
+        button[0].GetComponent<Image>().sprite = spriteImage[1];
+        button[1].GetComponent<Image>().sprite = spriteImage[1];
+        button[2].GetComponent<Image>().sprite = spriteImage[1];
+        button[3].GetComponent<Image>().sprite = spriteImage[1];
+
+        //changes the playerprefs value for when GameScene references it
+        PlayerPrefs.SetInt("SelectedColour", 5);
+    }
 
     //Nav from start screen
     public void StatsClickFromStart()
@@ -105,6 +189,7 @@ public class NavigationController : MonoBehaviour {
         PlayerPrefs.SetInt("TotalPlayerDeaths", 0);
         PlayerPrefs.SetInt("TotalTimeSurvived", 0);
         PlayerPrefs.SetInt("TotalBlocksDodged", 0);
+        PlayerPrefs.SetInt("SelectedColour", 1);
         SceneManager.LoadScene(0);
 
     }
