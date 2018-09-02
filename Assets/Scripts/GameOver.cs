@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour {
 
     public GameObject gameOverScreen;
     public Text secondsSurvivedUI;
+    public Text blocksDodgedText;
     public GameObject newHighScoreText;
     public bool gameOver;
     int currentScore;
@@ -37,6 +38,7 @@ public class GameOver : MonoBehaviour {
         secondsSurvivedUI.text = Mathf.RoundToInt(Time.timeSinceLevelLoad).ToString();
         currentScore = Mathf.RoundToInt(Time.timeSinceLevelLoad);
         gameOver = true;
+        blocksDodgedText.text = blockSpawner.count.ToString();
         PlayerPrefs.SetInt("TotalTimeSurvived", PlayerPrefs.GetInt("TotalTimeSurvived") + Mathf.RoundToInt(Time.timeSinceLevelLoad));
         PlayerPrefs.SetInt("TotalPlayerDeaths", PlayerPrefs.GetInt("TotalPlayerDeaths") + 1);
         PlayerPrefs.SetInt("TotalBlocksDodged", PlayerPrefs.GetInt("TotalBlocksDodged") + blockSpawner.count);
