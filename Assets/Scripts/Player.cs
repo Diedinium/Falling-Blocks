@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -28,24 +29,31 @@ public class Player : MonoBehaviour {
 	
 	
 	void Update () {
-        PlayerMovement();
+        //PlayerMovement();
+
+        //PlayerMovementLeft();
 	}
 
-    void PlayerMovement ()
+    public void PlayerMovementLeft()
     {
-        float inputX = Input.GetAxisRaw("Horizontal");
-        float velocity = inputX * speed;
-        transform.Translate(Vector2.right * velocity * Time.deltaTime);
-
-        if (transform.position.x < -screenHalfWidthInWorldUnits - halfPlayerWidth)
-        {
-            transform.position = new Vector2(screenHalfWidthInWorldUnits - halfPlayerWidth, transform.position.y);
-        }
-        if (transform.position.x > screenHalfWidthInWorldUnits + halfPlayerWidth)
-        {
-            transform.position = new Vector2(-screenHalfWidthInWorldUnits + halfPlayerWidth, transform.position.y);
-        }
+            player.transform.position += Vector2.left * speed * Time.deltaTime;
     }
+
+    //void PlayerMovement ()
+    //{
+    //    float inputX = Input.GetAxisRaw("Horizontal");
+    //    float velocity = inputX * speed;
+    //    transform.Translate(Vector2.right * velocity * Time.deltaTime);
+
+    //    if (transform.position.x < -screenHalfWidthInWorldUnits - halfPlayerWidth)
+    //    {
+    //        transform.position = new Vector2(screenHalfWidthInWorldUnits - halfPlayerWidth, transform.position.y);
+    //    }
+    //    if (transform.position.x > screenHalfWidthInWorldUnits + halfPlayerWidth)
+    //    {
+    //        transform.position = new Vector2(-screenHalfWidthInWorldUnits + halfPlayerWidth, transform.position.y);
+    //    }
+    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
