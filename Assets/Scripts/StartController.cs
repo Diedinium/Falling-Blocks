@@ -47,6 +47,8 @@ public class StartController : MonoBehaviour {
         ButtonInteractableController();
 
         CurrentlySelectedButton();
+
+
     }
 
     void Update () {
@@ -65,6 +67,15 @@ public class StartController : MonoBehaviour {
         if (PlayerPrefs.GetInt("TotalTimeSurvived") != 0 && PlayerPrefs.GetInt("TotalPlayerDeaths") != 0)
         {
             averageScoreText.text = (PlayerPrefs.GetInt("TotalTimeSurvived") / PlayerPrefs.GetInt("TotalPlayerDeaths")).ToString();
+        }
+
+        if (PlayerPrefs.GetInt("SoundSetting") == 1)
+        {
+            GetComponent<AudioSource>().enabled = false;
+        }
+        else
+        {
+            GetComponent<AudioSource>().enabled = true;
         }
 	}
 

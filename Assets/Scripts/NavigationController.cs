@@ -20,6 +20,23 @@ public class NavigationController : MonoBehaviour {
     //image array, stores the two possible states of the colour select buttons.
     public Sprite[] spriteImage;
 
+    //array to store thw two sound buttons as gameobjects
+    public GameObject[] soundControl;
+
+    void Update()
+    {
+        if (PlayerPrefs.GetInt("SoundSetting") == 1)
+        {
+            soundControl[0].SetActive(false);
+            soundControl[1].SetActive(true);
+        }
+        else
+        {
+            soundControl[0].SetActive(true);
+            soundControl[1].SetActive(false);
+        }
+    }
+
     //button functions in colour select
     public void ColourSelectRed()
     {
@@ -211,5 +228,19 @@ public class NavigationController : MonoBehaviour {
     public void StartTap()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void SoundDisable()
+    {
+        soundControl[0].SetActive(false);
+        soundControl[1].SetActive(true);
+        PlayerPrefs.SetInt("SoundSetting", 1);
+    }
+
+    public void SoundEnable()
+    {
+        soundControl[0].SetActive(true);
+        soundControl[1].SetActive(false);
+        PlayerPrefs.SetInt("SoundSetting", 0);
     }
 }

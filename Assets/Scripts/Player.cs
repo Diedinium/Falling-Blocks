@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 
     void PlayerMovement()
     {
-        float inputX = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+        float inputX = CrossPlatformInputManager.GetAxis("Horizontal");
         float velocity = inputX * speed;
         transform.Translate(Vector2.right * velocity * Time.deltaTime);
 
