@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
@@ -29,31 +30,25 @@ public class Player : MonoBehaviour {
 	
 	
 	void Update () {
-        //PlayerMovement();
-
-        //PlayerMovementLeft();
+        PlayerMovement();
 	}
 
-    public void PlayerMovementLeft()
+
+    void PlayerMovement()
     {
-            player.transform.position += Vector2.left * speed * Time.deltaTime;
+        float inputX = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+        float velocity = inputX * speed;
+        transform.Translate(Vector2.right * velocity * Time.deltaTime);
+
+        if (transform.position.x < -screenHalfWidthInWorldUnits - halfPlayerWidth)
+        {
+            transform.position = new Vector2(screenHalfWidthInWorldUnits - halfPlayerWidth, transform.position.y);
+        }
+        if (transform.position.x > screenHalfWidthInWorldUnits + halfPlayerWidth)
+        {
+            transform.position = new Vector2(-screenHalfWidthInWorldUnits + halfPlayerWidth, transform.position.y);
+        }
     }
-
-    //void PlayerMovement ()
-    //{
-    //    float inputX = Input.GetAxisRaw("Horizontal");
-    //    float velocity = inputX * speed;
-    //    transform.Translate(Vector2.right * velocity * Time.deltaTime);
-
-    //    if (transform.position.x < -screenHalfWidthInWorldUnits - halfPlayerWidth)
-    //    {
-    //        transform.position = new Vector2(screenHalfWidthInWorldUnits - halfPlayerWidth, transform.position.y);
-    //    }
-    //    if (transform.position.x > screenHalfWidthInWorldUnits + halfPlayerWidth)
-    //    {
-    //        transform.position = new Vector2(-screenHalfWidthInWorldUnits + halfPlayerWidth, transform.position.y);
-    //    }
-    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {

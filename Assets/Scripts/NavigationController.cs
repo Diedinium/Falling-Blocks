@@ -207,4 +207,9 @@ public class NavigationController : MonoBehaviour {
         carouselScreen.SetActive(false);
     }
 
+    //Mobile support related nav
+    public void StartTap()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
