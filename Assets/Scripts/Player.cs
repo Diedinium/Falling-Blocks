@@ -19,7 +19,6 @@ public class Player : MonoBehaviour {
 
     public GameObject player;
 
-
 	void Start () {
         halfPlayerWidth = transform.localScale.x / 2f;
         screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
