@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Difficulty {
 
-    static float secondsToMaxDiff = 80;
+    static float secondsToMaxDiff = 60;
 
     public static float GetDifficultyPercent() {
         //return 1;

@@ -23,6 +23,13 @@ public class NavigationController : MonoBehaviour {
     //array to store thw two sound buttons as gameobjects
     public GameObject[] soundControl;
 
+    StartController startController;
+
+    void Start()
+    {
+        startController = FindObjectOfType<StartController>();
+    }
+
     void Update()
     {
         if (PlayerPrefs.GetInt("SoundSetting") == 1)
@@ -242,5 +249,15 @@ public class NavigationController : MonoBehaviour {
         soundControl[0].SetActive(true);
         soundControl[1].SetActive(false);
         PlayerPrefs.SetInt("SoundSetting", 0);
+    }
+
+    public void ExitYes()
+    {
+        Application.Quit();
+    }
+
+    public void ExitNo()
+    {
+        startController.exitPopup.SetActive(false);
     }
 }

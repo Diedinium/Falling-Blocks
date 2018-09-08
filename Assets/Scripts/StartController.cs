@@ -34,6 +34,9 @@ public class StartController : MonoBehaviour {
     //Stores an image for the currently selected colour button
     public Sprite spriteImage;
 
+    //stores exit popup as gameobject
+    public GameObject exitPopup;
+
 
     //Loads the stats and checks to see if buttons have been unlocked in "Colour select" each time the scene is loaded
     //The scene reloads whenever the player returns from the GameScene, meaning these are fine being in the start function
@@ -48,7 +51,11 @@ public class StartController : MonoBehaviour {
 
         CurrentlySelectedButton();
 
-
+        highScoreText.text = highScore.ToString();
+        highScoreText2.text = highScore.ToString();
+        totalPlayerDeathsText.text = totalPlayerDeaths.ToString();
+        totalTimeSurvivedtext.text = totalTimeSurvived.ToString();
+        totalblocksdodgedtext.text = blocksDodged.ToString();
     }
 
     void Update () {
@@ -58,12 +65,14 @@ public class StartController : MonoBehaviour {
             SceneManager.LoadScene(1);
         }
 
+        //Brings up exit page if Escape is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            exitPopup.SetActive(true);
+        }
+
         //Changes the various text fields that show stats.
-        highScoreText.text = highScore.ToString();
-        highScoreText2.text = highScore.ToString();
-        totalPlayerDeathsText.text = totalPlayerDeaths.ToString();
-        totalTimeSurvivedtext.text = totalTimeSurvived.ToString();
-        totalblocksdodgedtext.text = blocksDodged.ToString();
+
         if (PlayerPrefs.GetInt("TotalTimeSurvived") != 0 && PlayerPrefs.GetInt("TotalPlayerDeaths") != 0)
         {
             averageScoreText.text = (PlayerPrefs.GetInt("TotalTimeSurvived") / PlayerPrefs.GetInt("TotalPlayerDeaths")).ToString();
@@ -86,6 +95,7 @@ public class StartController : MonoBehaviour {
         totalTimeSurvived = PlayerPrefs.GetInt("TotalTimeSurvived");
         blocksDodged = PlayerPrefs.GetInt("TotalBlocksDodged");
         selectedColour = PlayerPrefs.GetInt("SelectedColour");
+
     }
 
     private void ButtonInteractableController()
