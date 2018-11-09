@@ -18,15 +18,6 @@ public class BlockSpawner : MonoBehaviour {
 	void Start () {
         screenHalfSizeWorldUnits = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);
         gameOver = FindObjectOfType<GameOver>();
-
-        if (PlayerPrefs.GetInt("SoundSetting") == 1)
-        {
-            GetComponent<AudioSource>().enabled = false;
-        }
-        else
-        {
-            GetComponent<AudioSource>().enabled = true;
-        }
     }
 	
 	void Update () {
