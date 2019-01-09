@@ -13,11 +13,11 @@ public class BlockSpawner : MonoBehaviour {
     float nextSpawnTime;
     public float secondsBetweenSpawns;
 
-    GameOver gameOver;
+    public GameOver gameOver;
 
 	void Start () {
         screenHalfSizeWorldUnits = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);
-        gameOver = FindObjectOfType<GameOver>();
+        //gameOver = FindObjectOfType<GameOver>();
     }
 	
 	void Update () {
@@ -26,7 +26,7 @@ public class BlockSpawner : MonoBehaviour {
 
     void BlockSpawn ()
     {
-        if (Time.time > nextSpawnTime && gameOver.gameOver == false)
+        if (Time.time > nextSpawnTime && gameOver.ReturnGameOverState() == false)
         {
             secondsBetweenSpawns = Mathf.Lerp(InstantaionTimeMinMax.y, InstantaionTimeMinMax.x, Difficulty.GetDifficultyPercent());
             nextSpawnTime = Time.time + secondsBetweenSpawns;
@@ -38,7 +38,7 @@ public class BlockSpawner : MonoBehaviour {
             GameObject newBlock = (GameObject)Instantiate(fallingBlockPrefab[0], spawnPosition, Quaternion.Euler(randomRotation));
             newBlock.transform.localScale = randomSize;
         }
-        else if (Time.time > nextSpawnTime && gameOver.gameOver == true)
+        else if (Time.time > nextSpawnTime && gameOver.ReturnGameOverState() == true)
         {
             secondsBetweenSpawns = Mathf.Lerp(InstantaionTimeMinMax.y, InstantaionTimeMinMax.x, Difficulty.GetDifficultyPercent());
             nextSpawnTime = Time.time + secondsBetweenSpawns;

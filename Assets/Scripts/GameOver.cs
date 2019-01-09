@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour {
     public GameObject newHighScoreText;
     public GameObject leftButton;
     public GameObject rightButton;
-    public bool gameOver;
+    private bool gameOver;
     int currentScore;
     int highScore;
     BlockSpawner blockSpawner;
@@ -53,5 +53,10 @@ public class GameOver : MonoBehaviour {
             newHighScoreText.SetActive(true);
             Debug.Log(currentScore + "is new saved highscore");
         }
+    }
+
+    public bool ReturnGameOverState()
+    {
+        return gameOver;
     }
 }
