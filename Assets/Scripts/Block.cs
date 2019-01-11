@@ -20,7 +20,7 @@ public class Block : MonoBehaviour {
         BlockMovement();
 	}
 
-    void BlockMovement ()
+    public void BlockMovement ()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime, Space.Self);
         //screenWidthLocal + blockSpawner.blockSize
