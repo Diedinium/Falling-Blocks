@@ -23,15 +23,20 @@ public class NavigationController : MonoBehaviour {
     //array to store thw two sound buttons as gameobjects
     public GameObject[] soundControl;
 
+    //Instance of the StartController class
     StartController startController;
 
+    //On game start
     void Start()
     {
+        //Find the start controller
         startController = FindObjectOfType<StartController>();
     }
 
+    //On each update
     void Update()
     {
+        //Controls which of the sound buttons is currently visible depending on the value of the sound settings
         if (PlayerPrefs.GetInt("SoundSetting") == 1)
         {
             soundControl[0].SetActive(false);
@@ -121,18 +126,21 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Nav from start screen
+    //Loads the stats screen when clicked from start screen
     public void StatsClickFromStart()
     {
         startScreen.SetActive(false);
         statisticsScreen.SetActive(true);
     }
 
+    //Loads the help screen when clicked from start screen
     public void HelpClickFromStart()
     {
         startScreen.SetActive(false);
         helpScreen.SetActive(true);
     }
 
+    //Loads the settings screen when clicked from start screen
     public void SettingsClickFromStart()
     {
         startScreen.SetActive(false);
@@ -140,18 +148,21 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Nav from stats screen
+    //Loads the menu screen when clicked from stats screen
     public void MenuClickFromStats()
     {
         statisticsScreen.SetActive(false);
         startScreen.SetActive(true);
     }
 
+    //Loads the help screen when clicked from stats screen
     public void HelpClickFromStats()
     {
         statisticsScreen.SetActive(false);
         helpScreen.SetActive(true);
     }
 
+    //Loads the settings screen when clicked from stats screen
     public void SettingsClickFromStats()
     {
         statisticsScreen.SetActive(false);
@@ -159,18 +170,21 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Nav from help screen
+    //Loads the menu screen when clicked from help screen
     public void MenuClickFromHelp()
     {
         helpScreen.SetActive(false);
         startScreen.SetActive(true);
     }
 
+    //Loads the stats screen when clicked from Help screen
     public void StatsClickFromHelp()
     {
         helpScreen.SetActive(false);
         statisticsScreen.SetActive(true);
     }
 
+    //Loads the settings screen when clicked from help screen
     public void SettingsClickFromHelp()
     {
         helpScreen.SetActive(false);
@@ -178,18 +192,21 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Nav from settings screen
+    //Loads the menu screen when clicked from settings screen
     public void MenuClickFromSettings()
     {
         settingsScreen.SetActive(false);
         startScreen.SetActive(true);
     }
 
+    //Loads the stats screen when clicked from settings screen
     public void StatsClickFromSettings()
     {
         settingsScreen.SetActive(false);
         statisticsScreen.SetActive(true);
     }
 
+    //Loads the help screen when clicked from settings screen
     public void HelpClickFromSettings()
     {
         settingsScreen.SetActive(false);
@@ -197,16 +214,19 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Nav for deleting user data
+    //Shows the delete user data pop-up
     public void DeleteClick()
     {
         deletePopup.SetActive(true);
     }
 
+    //Hides the delete user data pop-up
     public void CancelClick()
     {
         deletePopup.SetActive(false);
     }
 
+    //Deletes the user data if they click yes
     public void YesClick()
     {
         PlayerPrefs.SetInt("HighScore", 0);
@@ -219,12 +239,14 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Nav for carousel
+    //Shows the colour selection carousel
     public void CarouselClick()
     {
         startScreen.SetActive(false);
         carouselScreen.SetActive(true);
     }
 
+    //Returns to the menu from the carousel
     public void MenuClickFromCarousel()
     {
         startScreen.SetActive(true);
@@ -232,11 +254,13 @@ public class NavigationController : MonoBehaviour {
     }
 
     //Mobile support related nav
+    //starts the game when background is tapped
     public void StartTap()
     {
         SceneManager.LoadScene(1);
     }
 
+    //Disables the sound when button is tapped.
     public void SoundDisable()
     {
         soundControl[0].SetActive(false);
@@ -244,6 +268,7 @@ public class NavigationController : MonoBehaviour {
         PlayerPrefs.SetInt("SoundSetting", 1);
     }
 
+    //Enables the sounds when button is tapped.
     public void SoundEnable()
     {
         soundControl[0].SetActive(true);
@@ -251,11 +276,13 @@ public class NavigationController : MonoBehaviour {
         PlayerPrefs.SetInt("SoundSetting", 0);
     }
 
+    //Exits the application if the yes button is tapped
     public void ExitYes()
     {
         Application.Quit();
     }
 
+    //Closes the pop-up if the no button is tapped.
     public void ExitNo()
     {
         startController.exitPopup.SetActive(false);
