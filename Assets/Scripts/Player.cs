@@ -6,6 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
+    //variable declaration
     public float speed = 8.5f;
     float screenHalfWidthInWorldUnits;
     float halfPlayerWidth;
@@ -17,31 +18,39 @@ public class Player : MonoBehaviour {
     //Array storing the different available materials.
     public Material[] material;
 
+    //Gets player gameobject for use locally
     public GameObject player;
 
+    //runs on game start
 	void Start () {
+        //Caclculates half player width
         halfPlayerWidth = transform.localScale.x / 2f;
+        //Find half screen width
         screenHalfWidthInWorldUnits = Camera.main.aspect * Camera.main.orthographicSize;
+        //Find currently selected colour
         selectedColour = PlayerPrefs.GetInt("SelectedColour");
 
+        //Set the player colour
         SelectColourController();
 	}
 	
 	
 	void Update () {
+        //Run on each update
         PlayerMovement();
 	}
 
 
     void PlayerMovement()
     {
-        //float inputX = CrossPlatformInputManager.GetAxis("Horizontal");
-        //float velocity = inputX * speed;
-        //transform.Translate(Vector2.right * velocity * Time.deltaTime);
+        //Get movement axis value
         var inputX = CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * speed;
+        //Calculate new position based on current postion plus value of inputX
         var newXPos = transform.position.x + inputX;
+        //Transform player to new position
         transform.position = new Vector2(newXPos, transform.position.y);
 
+        //If the player crosses one side of the map or the other, player is tranformed to other side of map.
         if (transform.position.x < -screenHalfWidthInWorldUnits - halfPlayerWidth)
         {
             transform.position = new Vector2(screenHalfWidthInWorldUnits - halfPlayerWidth, transform.position.y);
@@ -52,6 +61,7 @@ public class Player : MonoBehaviour {
         }
     }
 
+    //If player collides with a block, runs "OnPlayerDeath" action and destroys game object.
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Block")
@@ -64,6 +74,7 @@ public class Player : MonoBehaviour {
         }
     }
 
+    //Sets colour based on value of currently selected colour.
     void SelectColourController()
     {
         if (selectedColour == 1)

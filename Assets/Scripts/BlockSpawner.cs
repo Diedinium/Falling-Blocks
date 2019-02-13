@@ -39,13 +39,17 @@ public class BlockSpawner : MonoBehaviour {
             //Creates the next spawn time by adding the current time and secondsBetweenSpawns together.
             nextSpawnTime = Time.time + secondsBetweenSpawns;
 
-            //Creates a reandom size between a random range.
+            //Creates a random size between a random range.
             randomSize = Vector3.one * (Random.Range(0.1f, 0.5f) + 0.4f);
-            //Find the block
+            //Find the block size on the x axis
             blockSize = transform.localScale.x;
+            //Create spawn postion
             Vector2 spawnPosition = new Vector2(Random.Range(-screenHalfSizeWorldUnits.x, screenHalfSizeWorldUnits.x), screenHalfSizeWorldUnits.y + blockSize);
+            //Create random rotation
             Vector3 randomRotation = Vector3.forward * Random.Range(-10f, 10f);
+            //Instantiate cube with random rotation and spawn position
             GameObject newBlock = (GameObject)Instantiate(fallingBlockPrefab[0], spawnPosition, Quaternion.Euler(randomRotation));
+            //Scale blocspawnk to random size upon
             newBlock.transform.localScale = randomSize;
         }
 
@@ -57,11 +61,17 @@ public class BlockSpawner : MonoBehaviour {
             //Creates the next spawn time by adding the current time and secondsBetweenSpawns together.
             nextSpawnTime = Time.time + secondsBetweenSpawns;
 
+            //Creates a random size between a random range.
             randomSize = Vector3.one * (Random.Range(0.1f, 0.5f) + 0.4f);
+            //Find the block size on the x axis
             blockSize = transform.localScale.x;
+            //Create spawn postion
             Vector2 spawnPosition = new Vector2(Random.Range(-screenHalfSizeWorldUnits.x, screenHalfSizeWorldUnits.x), screenHalfSizeWorldUnits.y + blockSize);
+            //Create random rotation
             Vector3 randomRotation = Vector3.forward * Random.Range(-10f, 10f);
+            //Instantiate cube with random rotation and spawn position
             GameObject newBlock = (GameObject)Instantiate(fallingBlockPrefab[1], spawnPosition, Quaternion.Euler(randomRotation));
+            //Scale blocspawnk to random size upon
             newBlock.transform.localScale = randomSize;
         }
     }

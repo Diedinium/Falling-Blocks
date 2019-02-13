@@ -31,6 +31,7 @@ public class ScrollRectToSnap : MonoBehaviour {
 
     void Start()
     {
+        //Get length of buttons and store in variable
         int bttnLength = bttn.Length;
         distance = new float[bttnLength];
 
@@ -57,8 +58,10 @@ public class ScrollRectToSnap : MonoBehaviour {
             }
         }
 
+        //Controls which buttons are unlocked/usable
         UnlockControl();
 
+        //When user stopps dragging, lerps to nearest button.
         if (!dragging)
         {
             LerpToBttn(minButtonNum * -bttnDistance);
@@ -67,6 +70,7 @@ public class ScrollRectToSnap : MonoBehaviour {
 
     }
 
+    //Calculates a lerp value so that scrollRect smoothly moves to center position.
     void LerpToBttn(int position)
     {
         float newX = Mathf.Lerp(panel.anchoredPosition.x, position, Time.deltaTime * 10f);
@@ -75,8 +79,10 @@ public class ScrollRectToSnap : MonoBehaviour {
         panel.anchoredPosition = newPosition;
     }
 
+    //Controls which buttons are unlocked.
     void UnlockControl()
     {
+        //shows description if nearest button is first button
         if (minButtonNum == 0)
         {
             standardRedDescription.SetActive(true);
@@ -86,6 +92,7 @@ public class ScrollRectToSnap : MonoBehaviour {
             standardRedDescription.SetActive(false);
         }
 
+        //Controls which description is visible and if button is active based on playerprefs values
         if (minButtonNum == 1 && PlayerPrefs.GetInt("TotalPlayerDeaths") >= 100)
         {
             vibrantBlueDescription.SetActive(true);
@@ -103,6 +110,7 @@ public class ScrollRectToSnap : MonoBehaviour {
             vibrantBlueUnlocked.SetActive(false);
         }
 
+        //Controls which description is visible and if button is active based on playerprefs values
         if (minButtonNum == 2 && PlayerPrefs.GetInt("TotalBlocksDodged") >= 5000)
         {
             neonGreenDescription.SetActive(true);
@@ -120,6 +128,7 @@ public class ScrollRectToSnap : MonoBehaviour {
             neonGreenUnlocked.SetActive(false);
         }
 
+        //Controls which description is visible and if button is active based on playerprefs values
         if (minButtonNum == 3 && PlayerPrefs.GetInt("TotalTimeSurvived") >= 1800)
         {
             perfectPurpleDescription.SetActive(true);
@@ -137,6 +146,7 @@ public class ScrollRectToSnap : MonoBehaviour {
             perfectPurpleUnlocked.SetActive(false);
         }
 
+        //Controls which description is visible and if button is active based on playerprefs values
         if (minButtonNum == 4 && PlayerPrefs.GetInt("TotalTimeSurvived") >= 3600 && PlayerPrefs.GetInt("HighScore") >= 80)
         {
             goldenGoldDescription.SetActive(true);
@@ -155,11 +165,13 @@ public class ScrollRectToSnap : MonoBehaviour {
         }
     }
 
+    //Sets the dragging value when scrollRect is being dragged.
     public void StartDrag()
     {
         dragging = true;
     }
 
+    //Sets the dragging value when the scrollRect is not being dragged.
     public void EndDrag()
     {
         dragging = false;
