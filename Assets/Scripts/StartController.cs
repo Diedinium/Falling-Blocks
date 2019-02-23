@@ -37,20 +37,20 @@ public class StartController : MonoBehaviour {
     //stores exit popup as gameobject
     public GameObject exitPopup;
 
-
-    //Loads the stats and checks to see if buttons have been unlocked in "Colour select" each time the scene is loaded
     //The scene reloads whenever the player returns from the GameScene, meaning these are fine being in the start function
     //because it will not be possible for a player to incur changed stats while in the StartScene.
     void Start()
     {
-        //Testing();
-
+        //Loads the stats and checks to see if buttons have been unlocked in "Colour select" each time the scene is loaded
         LoadStats();
 
+        //Controls which of the carousel buttons can be interacted with
         ButtonInteractableController();
 
+        //Changes the button state to a "ticked" variant when clicked
         CurrentlySelectedButton();
 
+        //Sets the values of these UI text elements upon load
         highScoreText.text = highScore.ToString();
         highScoreText2.text = highScore.ToString();
         totalPlayerDeathsText.text = totalPlayerDeaths.ToString();
@@ -58,26 +58,27 @@ public class StartController : MonoBehaviour {
         totalblocksdodgedtext.text = blocksDodged.ToString();
     }
 
+    //Runs on each update
     void Update () {
-        //Loads the GameScene when "Space" is pressed.
+        //Loads the GameScene when "Space" is pressed (Left in for redundancy)
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene(1);
         }
 
-        //Brings up exit page if Escape is pressed
+        //Brings up exit page if Escape (Back button in Android) is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             exitPopup.SetActive(true);
         }
 
         //Changes the various text fields that show stats.
-
         if (PlayerPrefs.GetInt("TotalTimeSurvived") != 0 && PlayerPrefs.GetInt("TotalPlayerDeaths") != 0)
         {
             averageScoreText.text = (PlayerPrefs.GetInt("TotalTimeSurvived") / PlayerPrefs.GetInt("TotalPlayerDeaths")).ToString();
         }
 
+        //Controls if the music is enabled or disabled
         if (PlayerPrefs.GetInt("SoundSetting") == 1)
         {
             GetComponent<AudioSource>().enabled = false;
@@ -88,6 +89,7 @@ public class StartController : MonoBehaviour {
         }
 	}
 
+    //Loads the stats that are stored in playerprefs into the game.
     private void LoadStats()
     {
         highScore = PlayerPrefs.GetInt("HighScore");
@@ -98,8 +100,10 @@ public class StartController : MonoBehaviour {
 
     }
 
+    //Controls which carousel buttons are interactable
     private void ButtonInteractableController()
     {
+        //Controls if the "blue" colour option is available
         if (totalPlayerDeaths >= 100)
         {
             button1.interactable = true;
@@ -111,6 +115,7 @@ public class StartController : MonoBehaviour {
             Locked[0].SetActive(true);
         }
 
+        //Controls if the "Green" option is available
         if (blocksDodged >= 5000)
         {
             button2.interactable = true;
@@ -122,6 +127,7 @@ public class StartController : MonoBehaviour {
             Locked[1].SetActive(true);
         }
 
+        //Controls if the "Purple" option is available
         if (totalTimeSurvived >= 1800)
         {
             button3.interactable = true;
@@ -133,6 +139,7 @@ public class StartController : MonoBehaviour {
             Locked[2].SetActive(true);
         }
 
+        //controls if the "Gold" option is available
         if (totalTimeSurvived >= 3600 && highScore >= 80)
         {
             button4.interactable = true;
@@ -145,14 +152,7 @@ public class StartController : MonoBehaviour {
         }
     }
 
-    void Testing()
-    {
-        //PlayerPrefs.SetInt("TotalTimeSurvived", 3600);
-        //PlayerPrefs.SetInt("TotalPlayerDeaths", 100);
-        //PlayerPrefs.SetInt("HighScore", 80);
-        //PlayerPrefs.SetInt("TotalBlocksDodged", 5000);
-    }
-
+    //Sets the currently selected button to have a checkbox icon if it is clicked
     void CurrentlySelectedButton()
     {
         if (selectedColour == 1)
