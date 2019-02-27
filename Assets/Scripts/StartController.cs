@@ -97,7 +97,6 @@ public class StartController : MonoBehaviour {
         totalTimeSurvived = PlayerPrefs.GetInt("TotalTimeSurvived");
         blocksDodged = PlayerPrefs.GetInt("TotalBlocksDodged");
         selectedColour = PlayerPrefs.GetInt("SelectedColour");
-
     }
 
     //Controls which carousel buttons are interactable

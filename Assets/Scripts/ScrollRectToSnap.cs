@@ -147,13 +147,13 @@ public class ScrollRectToSnap : MonoBehaviour {
         }
 
         //Controls which description is visible and if button is active based on playerprefs values
-        if (minButtonNum == 4 && PlayerPrefs.GetInt("TotalTimeSurvived") >= 3600 && PlayerPrefs.GetInt("HighScore") >= 80)
+        if ((minButtonNum == 4) && PlayerPrefs.GetInt("TotalTimeSurvived") >= 3600 && PlayerPrefs.GetInt("HighScore") >= 80)
         {
             goldenGoldDescription.SetActive(true);
             goldenGoldUnlocked.SetActive(false);
 
         }
-        else if (minButtonNum == 4 && PlayerPrefs.GetInt("TotalTimeSurvived") < 3600 && PlayerPrefs.GetInt("HighScore") < 80)
+        else if ((minButtonNum == 4) && (PlayerPrefs.GetInt("TotalTimeSurvived") <= 3599 || PlayerPrefs.GetInt("HighScore") <= 79))
         {
             goldenGoldDescription.SetActive(false);
             goldenGoldUnlocked.SetActive(true);
