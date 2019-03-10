@@ -56,6 +56,7 @@ public class StartController : MonoBehaviour {
         totalPlayerDeathsText.text = totalPlayerDeaths.ToString();
         totalTimeSurvivedtext.text = totalTimeSurvived.ToString();
         totalblocksdodgedtext.text = blocksDodged.ToString();
+
     }
 
     //Runs on each update
